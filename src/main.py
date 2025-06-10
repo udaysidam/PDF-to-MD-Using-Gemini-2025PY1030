@@ -1,7 +1,6 @@
 def main():
-    pass  # remove before starting
-# Write your code here
-
+    print("Hello World")
+    
 if __name__ == '__main__':
     main()
 
