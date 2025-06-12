@@ -22,6 +22,13 @@ def select_pdfs(pdf_files):
     answers = inquirer.prompt(questions)
     return answers.get("selected", [])
 
+    def create_output_dir():
+    """Create a new directory named <current-folder>_converted-md."""
+    current_dir = os.path.basename(os.getcwd())
+    output_dir = f"{current_dir}_converted-md"
+    os.makedirs(output_dir, exist_ok=True)
+    return output_dir
+
 def main():
     pdf_files = list_pdf_files()
     selected_pdfs = select_pdfs(pdf_files)
