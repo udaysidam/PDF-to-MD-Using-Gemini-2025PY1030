@@ -3,7 +3,7 @@ import inquirer
 
 def list_pdf_files():
     """List all PDF files in the current directory."""
-    return [f for f in os.listdir() if f.endswith("c:/Users/ANOOP/Downloads/sample.pdf")]
+    return [f for f in os.listdir() if f.endswith("PDF-to-MD-Using-Gemini-2025PY1030/sam/sample.pdf")]
 
 def select_pdfs(pdf_files):
     """CLI UI to select PDF files using inquirer."""
@@ -29,7 +29,7 @@ def main():
     if selected_pdfs:
         print("\n You selected:")
         for f in selected_pdfs:
-            print(f" - {f}")
+            print(f" - {f}")    
     else:
         print(" No PDF files selected.")
 
