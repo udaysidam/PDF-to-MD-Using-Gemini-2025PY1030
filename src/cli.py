@@ -1,5 +1,5 @@
-import os
-import inquirer
+import os 
+import 
 
 def list_pdf_files():
     """List all PDF files in the current directory."""
