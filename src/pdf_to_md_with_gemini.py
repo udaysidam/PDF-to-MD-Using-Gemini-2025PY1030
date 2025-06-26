@@ -2,12 +2,21 @@ import os
 import fitz  # PyMuPDF
 import inquirer
 import google.generativeai as genai
+from dotenv import load_dotenv   # ✅ load dotenv
+
+load_dotenv()  # ✅ loads .env file into environment
+genai.configure(api_key=os.environ.get('GOOGLE_API_KEY'))  
 
 # Set API Key
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
+
+# ✅ Set your PDF directory path
+pdf_directory = r"C:/Users/ANOOP/Downloads/gitrepo/PDF-to-MD-Using-Gemini-2025PY1030/src"
+
 def list_pdf_files():
-    return [f for f in os.listdir() if f.endswith(".pdf")]
+    # list all PDFs in the directory
+    return [f for f in os.listdir(pdf_directory) if f.lower().endswith(".pdf")]
 
 def select_files(files):
     if not files:
@@ -15,8 +24,8 @@ def select_files(files):
         return []
     questions = [
         inquirer.Checkbox(
-            'choices',
-            message='Select PDF files to convert',
+            "choices",
+            message="Select PDF files to convert",
             choices=files,
         )
     ]
@@ -36,7 +45,7 @@ def extract_text_from_pdf(path):
     return content.strip()
 
 def convert_text_to_md(text):
-    model = genai.GenerativeModel('gemini-pro')
+    model = genai.GenerativeModel('gemini-1.5-flash')
     prompt = f"Convert the following text into Markdown format:\n\n{text}"
     response = model.generate_content(prompt)
     return response.text
@@ -44,7 +53,7 @@ def convert_text_to_md(text):
 def save_markdown(filename, content, folder):
     name = os.path.splitext(filename)[0] + ".md"
     path = os.path.join(folder, name)
-    with open(path, 'w', encoding='utf-8') as f:
+    with open(path, "w", encoding="utf-8") as f:
         f.write(content)
     print(f"✅ Saved: {path}")
 
@@ -59,7 +68,7 @@ def main():
     output_dir = create_output_folder()
 
     for pdf in selected:
-        full_path = os.path.join(os.getcwd(), pdf)
+        full_path = os.path.join(pdf_directory, pdf)
         pdf_text = extract_text_from_pdf(full_path)
         if not pdf_text:
             print(f"No text found in {pdf}, skipping.")
