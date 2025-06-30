@@ -11,8 +11,8 @@ An environment refers to all of the living and nonliving things that surround an
 **Figure 1. An environment contains living (biotic) and nonliving (abiotic) parts. This meadow is an example of an environment. We can see living things, such as the deer, grass, and shrubs, as well as nonliving things, such as the water. Interactions between the biotic and abiotic parts of an environment help meet the needs of the living things that live there so they can survive and grow.**
 
 
-# 2. 
+---
+
+# Kindergarten Plants and Animals Module
 
 **© 2017 CPP and BSCS  RESPeCT**
-
-**Kindergarten Plants and Animals Module**
